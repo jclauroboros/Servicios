@@ -24,6 +24,7 @@ class Usuario {
 public function login($id,$pass){
   $conn = new Conexion();
   //Preparamos la consulta
+  $pass = md5($pass);//Se cifra la contraseña ingresada por el usuario para comparar con la contraseña cifrada en la BD
   $stmt = $conn->prepare ("SELECT * FROM Usuarios WHERE Id = :ss AND Pass = :pp");
  $stmt->execute(array(':ss' => $id ,':pp'=> $pass));
  $stmt->setFetchMode(PDO::FETCH_ASSOC);

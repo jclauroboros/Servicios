@@ -270,24 +270,27 @@ INSERT INTO `Titulares` (`IdUsuario`, `Ciclo`, `IdGrupo`, `Consecutivo`) VALUES
 
 CREATE TABLE `Usuarios` (
   `Id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `Pass` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `Pass` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `Type` int NOT NULL DEFAULT '0',
   `Privileges` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Tabla de Usuarios (sin datos)';
 
 --
--- Volcado de datos para la tabla `Usuarios`
+-- Volcado de datos para la tabla `Usuarios` 
+-- Se edito a 32 el varchar de pass porque md5 tiene 32 caracteres-Juan Carlos
 --
 
 INSERT INTO `Usuarios` (`Id`, `Pass`, `Type`, `Privileges`) VALUES
-('160023', '123456', 0, 0),
-('160024', '123456', 0, 0),
-('190001', '123456', 0, 0),
-('190002', '123456', 0, 0),
-('becas', 'becas', 1, 4),
-('docente', 'docente', 1, 2),
-('jjmoreno23', '123456', 1, 5);
+('160023', md5('123456'), 0, 0),
+('160024', md5('123456'), 0, 0),
+('190001', md5('123456'), 0, 0),
+('190002', md5('123456'), 0, 0),
+('becas', md5('becas'), 1, 4),
+('docente', md5('docente'), 1, 2),
+('jjmoreno23', md5('123456'), 1, 5);
 
+--
+-- Se ingresan las contraseñas cifradas-Juan Carlos
 --
 -- Índices para tablas volcadas
 --
